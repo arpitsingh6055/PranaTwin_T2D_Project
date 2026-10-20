@@ -13,7 +13,7 @@ from typing import Any
 import numpy as np
 from sklearn.ensemble import GradientBoostingClassifier, GradientBoostingRegressor
 
-from .model import CONFIG, transition
+from .model import CONFIG
 
 
 def medication_profile(context: dict[str, Any]) -> dict[str, float]:
@@ -174,25 +174,25 @@ def train_predictor(
         raise ValueError("Insufficient training observations for hybrid predictor")
     x_array = np.asarray(x)
     residual = GradientBoostingRegressor(
-        n_estimators=120, max_depth=2, learning_rate=0.04, random_state=42, loss="huber"
+        n_estimators=60, max_depth=2, learning_rate=0.04, random_state=42, loss="huber"
     ).fit(x_array, residual_y)
     lower = GradientBoostingRegressor(
-        loss="quantile", alpha=0.1, n_estimators=100, max_depth=2, random_state=42
+        loss="quantile", alpha=0.1, n_estimators=60, max_depth=2, random_state=42
     ).fit(x_array, y)
     upper = GradientBoostingRegressor(
-        loss="quantile", alpha=0.9, n_estimators=100, max_depth=2, random_state=42
+        loss="quantile", alpha=0.9, n_estimators=60, max_depth=2, random_state=42
     ).fit(x_array, y)
     labels_high = np.asarray(y) > 180
     labels_low = np.asarray(y) < 70
     high = (
-        GradientBoostingClassifier(n_estimators=80, max_depth=2, random_state=42).fit(
+        GradientBoostingClassifier(n_estimators=50, max_depth=2, random_state=42).fit(
             x_array, labels_high
         )
         if len(set(labels_high)) == 2
         else None
     )
     low = (
-        GradientBoostingClassifier(n_estimators=80, max_depth=2, random_state=42).fit(
+        GradientBoostingClassifier(n_estimators=50, max_depth=2, random_state=42).fit(
             x_array, labels_low
         )
         if len(set(labels_low)) == 2

@@ -163,7 +163,7 @@ def test_event_edges():
 
 def test_evaluation_executes(tmp_path):
     result = evaluate(tmp_path)
-    assert len(result["metrics"]) == 15
+    assert len(result["metrics"]) == 20
     assert (tmp_path / "predictions.csv").is_file()
     assert len(result["dataset_sha256"]) == 64
     assert all(m["n"] > 0 and math.isfinite(m["rmse"]) for m in result["metrics"])

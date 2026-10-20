@@ -10,7 +10,15 @@ Access date: 2026-10-20. Claims below are limited to the checked pages. Source d
 | S4 | Hemoglobin A1c/Hemoglobin.total in Blood, Regenstrief LOINC 4548-4 | https://loinc.org/4548-4/ | HbA1c coding. Current page checked; last updated term version 2.73 |
 | S5 | CGMacros: a scientific dataset for personalized nutrition and diet monitoring, PhysioNet v1.0.0 | https://physionet.org/content/cgmacros/1.0.0/ | Optional dataset candidate, not downloaded or used |
 | S6 | BIG IDEAs Lab Glycemic Variability and Wearable Device Data, PhysioNet | https://physionet.org/content/big-ideas-glycemic-wearable/ | Candidate only; page access failed in this session. Current version/license UNVERIFIED |
+| S7 | BIG IDEAs Lab dataset license, PhysioNet | https://physionet.org/content/big-ideas-glycemic-wearable/1.0.0/LICENSE.txt | Public research dataset candidate; ODC-By attribution obligations |
+| S8 | CGMacros, PhysioNet v1.0.0 | https://physionet.org/content/cgmacros/1.0.0/ | Public research dataset candidate for CGM, meals and wearable context; CC BY 4.0 attribution obligations |
 
 Model equations and gains: project-authored illustrative assumptions, no biological validity citation. Full named physiological model: NOT IMPLEMENTED. Original blueprint claims of ethnicity scaling, renal drug response, guaranteed improvements, production readiness, legal compliance and fixed performance: UNVERIFIED and excluded.
+
+The current hybrid implementation is inspired by Bergman/Hovorka compartment
+structure but is not the published model and must not be represented as a
+validated physiological simulator. Public datasets are candidates only until
+their current terms, files, subject identifiers and intended-use conditions
+are inspected locally and a source-specific import manifest is created.
 
 ABDM profile URL is verified, but local checks are insufficient to prove conformance. Terminology codes other than the verified HbA1c and FHIR condition-status vocabulary are not asserted. All third-party datasets retain their own terms. No regulatory class or legal-compliance conclusion is made.

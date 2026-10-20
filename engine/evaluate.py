@@ -211,7 +211,7 @@ def evaluate(output: Path | None = None) -> dict:
                     dict(field=field, value=value, method=method, **summarize(group))
                 )
     result = dict(
-        model_version=CONFIG["version"],
+        model_version="0.2.0-hybrid-gbr",
         generated_at=datetime.now(timezone.utc).isoformat(),
         source="synthetic",
         dataset_sha256=digest.hexdigest(),
@@ -219,14 +219,14 @@ def evaluate(output: Path | None = None) -> dict:
         config=CONFIG,
         patient_count=3,
         rows=8640,
-        protocol="Within-patient chronological 60/20/20; 24-step purges before validation and test; test origins every 30 minutes. Ridge preprocessing fitted on training only. Validation partition reserved, not used for tuning.",
+        protocol="Within-patient chronological 60/20/20; 24-step purges before validation and test; test origins every 30 minutes. Ridge and hybrid preprocessing fitted on training only. Validation partition reserved, not used for tuning.",
         limitations=[
             "Synthetic generator is not physiological truth. No clinical validation.",
             "Test windows overlap within holdout; no independence claim.",
             "No new-patient or real-world generalization evidence.",
             "Reduced-order model cannot anticipate unannounced meals or artificial low scenarios.",
-            "No calibrated intervals or probabilistic event risks.",
-            "Clarke grid unavailable: no verified implementation integrated.",
+            "Quantile intervals and event probabilities are research outputs and are not clinically calibrated.",
+            "Clarke Error Grid categories are reported as research error analysis, not a clinical safety certification.",
         ],
         manifest=manifest,
         metrics=metrics,

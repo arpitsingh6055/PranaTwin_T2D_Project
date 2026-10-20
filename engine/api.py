@@ -15,7 +15,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, ConfigDict
 from .data import PROFILES, telemetry, bundle, validate_bundle, baseline_from_bundle
-from .model import initial, synchronize, forecast, counterfactual, Scenario
+from .model import initial, synchronize, forecast, Scenario
 from .schemas import StateResponse, SnapshotResponse, ForecastResponse, ScenarioResponse
 from .production import LocalStore, normalize_wearable_payload, validate_fhir_bundle
 from .connectors import fetch_configured_wearable_payload
@@ -24,6 +24,7 @@ from .hybrid import train_predictor
 ROOT = Path(__file__).resolve().parents[1]
 log = logging.getLogger("pranatwin")
 DATA_DIR = Path(os.getenv("PRANATWIN_DATA_DIR", ROOT / "data"))
+_PREDICTOR_CACHE = {}
 
 
 class ReplayRequest(BaseModel):
@@ -87,6 +88,8 @@ class Sandbox:
             self.predictors[pid] = self._train_predictors(pid)
 
     def _train_predictors(self, pid):
+        if pid in _PREDICTOR_CACHE:
+            return _PREDICTOR_CACHE[pid]
         context = self.profiles[pid]
         state = initial(baseline_from_bundle(self.bundles[pid]))
         states = []
@@ -94,16 +97,18 @@ class Sandbox:
             state = synchronize(state, row)
             states.append(state)
         train_end = int(len(self.rows[pid]) * 0.6) - 24
-        return {
+        predictors = {
             horizon: train_predictor(
                 states,
                 self.rows[pid],
                 context,
                 horizon,
-                list(range(12, train_end)),
+                list(range(12, train_end, 4)),
             )
             for horizon in (15, 30, 60, 90, 120)
         }
+        _PREDICTOR_CACHE[pid] = predictors
+        return predictors
 
     def check(self, pid):
         if pid not in self.profiles:

@@ -170,6 +170,8 @@ def forecast(
         "reason": "No trained residual model supplied",
     }
     event_probability = None
+    above_180_probability = None
+    below_70_probability = None
     probability_status = "unavailable; deterministic threshold flags only"
     if context is not None:
         from .hybrid import hybrid_rollout
@@ -206,6 +208,8 @@ def forecast(
                 learned["above_180_probability"] or 0,
                 learned["below_70_probability"] or 0,
             )
+            above_180_probability = learned["above_180_probability"]
+            below_70_probability = learned["below_70_probability"]
             probability_status = "research classifier; not clinically calibrated"
             model_version = "0.2.0-hybrid-gbr"
     return dict(
@@ -221,6 +225,8 @@ def forecast(
             "below_70": any(p["glucose"] < 70 for p in points),
         },
         event_probability=event_probability,
+        above_180_probability=above_180_probability,
+        below_70_probability=below_70_probability,
         probability_status=probability_status,
         explanations=[
             f"Historical EHR baseline, updated causally: {state['baseline']:.1f} mg/dL",

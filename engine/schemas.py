@@ -45,7 +45,10 @@ class ForecastPoint(BaseModel):
 
 class Uncertainty(BaseModel):
     status: str
-    reason: str
+    reason: str = ""
+    lower: float | None = None
+    upper: float | None = None
+    method: str | None = None
 
 
 class EventFlags(BaseModel):
@@ -63,6 +66,8 @@ class ForecastResponse(BaseModel):
     uncertainty: Uncertainty
     event_flags: EventFlags
     event_probability: float | None
+    above_180_probability: float | None = None
+    below_70_probability: float | None = None
     probability_status: str
     explanations: list[str]
     calibration: str

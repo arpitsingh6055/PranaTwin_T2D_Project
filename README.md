@@ -85,7 +85,7 @@ Actual verification and limits: [audit](docs/audit.md). Current scientific/API/i
 
 ## Measured synthetic results
 
-Within-patient chronological 60/20/20, 120-minute purges, train-only ridge preprocessing, test origins every 30 minutes. Three fictional patients; 8,640 generated rows; **276 held-out predictions per model/horizon**. Test windows overlap within holdout and are correlated. Validation partition is reserved, not used to tune these results.
+Within-patient chronological 60/20/20, 120-minute purges, train-only preprocessing, test origins every 30 minutes. Three fictional patients; 8,640 generated rows; **276 held-out predictions per model/horizon**. Test windows overlap within holdout and are correlated. Validation partition is reserved, not used to tune these results. The live path uses the hybrid model: a bounded physiology-inspired prior plus gradient-boosted residual, quantile and endpoint classifier models.
 
 | Horizon | Persistence RMSE | Ridge RMSE | Reduced-order RMSE |
 |---|---:|---:|---:|
@@ -94,6 +94,11 @@ Within-patient chronological 60/20/20, 120-minute purges, train-only ridge prepr
 | 60 min | 29.66 | 18.83 | 26.50 |
 | 90 min | 38.43 | 23.01 | 33.74 |
 | 120 min | 43.83 | 22.91 | 36.27 |
+
+The hybrid model is now evaluated separately: RMSE is 5.50, 7.99, 13.12,
+17.57 and 19.12 mg/dL at 15, 30, 60, 90 and 120 minutes respectively on this
+synthetic generator. These results are not clinical validation and may reflect
+the simulator's construction.
 
 Units: mg/dL. Ridge is strongest on this simulator; reduced-order loses to persistence at 15 minutes. These numbers do **not** establish clinical accuracy. The online dashboard uses the reduced-order state/scenario engine; ridge is an offline benchmark. [Full metrics](reports/metrics.json), [truth/prediction pairs](reports/predictions.csv), [figure](reports/evaluation.pdf). Metrics include MAE, MARD, confusion counts and AUROC/AUPRC where defined. No probabilistic Brier, interval coverage or verified Clarke grid is available. Undefined values are null.
 

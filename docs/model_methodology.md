@@ -1,4 +1,22 @@
-# Model methodology, version 0.1.0
+# Model methodology, version 0.2.0
+
+## Hybrid clinical-research model
+
+The live forecast combines three deliberately separated layers:
+
+1. A bounded Bergman/Hovorka-inspired prior with glucose, carbohydrate-gut and
+   insulin-action compartments.
+2. A gradient-boosted residual regressor trained on causal state, wearable
+   autonomic signals and EHR context.
+3. Quantile regressors and endpoint classifiers for research uncertainty and
+   event-risk outputs.
+
+The equations are a reduced engineering approximation. They are not a
+validated Bergman or Hovorka implementation, do not identify insulin
+parameters, and do not recommend medication. Medication names and eGFR alter
+bounded context factors only; they are not pharmacokinetic or dosing models.
+All runtime research outputs are labeled as uncalibrated until validated on
+authorized real data.
 
 ## Scope and equations
 
