@@ -186,7 +186,7 @@ def create_app():
             pass
 
     app = FastAPI(
-        title="PranaTwin research sandbox", version="0.1.0", lifespan=lifespan
+        title="PranaTwin hybrid research platform", version="0.2.0", lifespan=lifespan
     )
     app.state.sandbox = sandbox
 
@@ -422,7 +422,7 @@ def create_app():
     @app.get("/api/v1/provenance")
     def provenance():
         return {
-            "model_version": "0.1.0",
+            "model_version": "0.2.0-hybrid-gbr",
             "source": "synthetic showcase; authorized FHIR and wearable ingestion boundary available",
             "seed": 42,
             "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -430,7 +430,7 @@ def create_app():
             "storage": "Local SQLite provenance and audit ledger",
             "limitations": [
                 "Not for patient care, diagnosis, emergency use or medication decisions.",
-                "No calibrated intervals, event probabilities or clinical validation.",
+                "Research quantile intervals and event probabilities are not clinically calibrated.",
                 "Prototype consent gate, no authentication or legal compliance claim.",
                 "HR/HRV/EDA/temperature displayed for context and quality; not used to infer glucose.",
             ],

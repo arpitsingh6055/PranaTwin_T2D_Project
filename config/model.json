@@ -1,1 +1,1 @@
-{"version":"0.1.0","seed":42,"step_minutes":5,"return_rate":0.012,"gut_rate":0.025,"carb_gain":1.8,"activity_gain":0.3,"baseline_learning_rate":0.01,"glucose_bounds":[40,400],"stale_minutes":15,"high_threshold":180,"low_threshold":70}
+{"version":"0.2.0","seed":42,"step_minutes":5,"return_rate":0.012,"gut_rate":0.025,"carb_gain":1.8,"activity_gain":0.3,"baseline_learning_rate":0.01,"glucose_bounds":[40,400],"stale_minutes":15,"high_threshold":180,"low_threshold":70}

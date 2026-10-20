@@ -22,7 +22,7 @@ def build():
     c.drawString(48, 478, "PranaTwin-T2D architecture")
     c.setFont("Helvetica", 12)
     c.drawString(
-        48, 451, "Actual sandbox data flow | synthetic research only | version 0.1.0"
+        48, 451, "Hybrid ML data flow | synthetic research only | version 0.2.0"
     )
     boxes = [
         (48, 320, 220, 75, "FHIR R4 document", "Historical glucose baseline"),
@@ -40,11 +40,11 @@ def build():
             320,
             250,
             75,
-            "Forecast / scenario engine",
-            "Bounded reduced-order rollout",
+            "Hybrid forecast / scenarios",
+            "Physiology prior + GBR residual",
         ),
         (660, 190, 250, 75, "React control room", "REST + WebSocket snapshots"),
-        (340, 70, 245, 70, "Offline evaluation", "Purged splits + CSV / JSON"),
+        (340, 70, 245, 70, "Offline evaluation", "Purged ML + quantiles + Clarke"),
     ]
     for x, y, w, h, title, sub in boxes:
         c.setFillColor(HexColor("#eaf3f0"))

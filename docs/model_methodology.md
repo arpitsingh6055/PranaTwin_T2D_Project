@@ -56,7 +56,7 @@ Require timezone-aware timestamps, mg/dL, finite bounded sensor values and stric
 
 ## Forecast and scenarios
 
-Return five-minute points out to 15..120 minutes, timestamps and units. Assume no unannounced future meal/activity. Event flags mean ANY predicted sampled value crosses the strict threshold within the horizon; they are research flags, not diagnoses. No calibrated event probabilities or intervals exist. Each scenario copies the identical initial state, adds 0..120 g carbohydrate multiplied by 0.7..1.3 factor, and applies activity 1..5 for 0..60 min. Report peak difference, curves, assumptions. It is not a food substitution estimate or treatment recommendation. The additive meal cannot establish a causal real-world benefit.
+Return five-minute points out to 15..120 minutes, timestamps and units. Assume no unannounced future meal/activity. Event flags mean ANY predicted sampled value crosses the strict threshold within the horizon; they are research flags, not diagnoses. Quantile bounds and endpoint event probabilities are available when the trained hybrid predictor is used, but are not clinically calibrated. Each scenario copies the identical initial state, adds 0..120 g carbohydrate multiplied by 0.7..1.3 factor, and applies activity 1..5 for 0..60 min. Report peak difference, curves, assumptions. It is not a food substitution estimate or treatment recommendation. The additive meal cannot establish a causal real-world benefit.
 
 ## Evaluation
 

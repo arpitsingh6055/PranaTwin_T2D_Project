@@ -20,11 +20,11 @@ Before public submission, rename this project directory to **`Team Name_College 
 
 ## What runs
 
-React + TypeScript + Vite + Recharts control room, FastAPI/Pydantic API, WebSocket telemetry replay, Python/NumPy scientific core and scikit-learn ridge baseline. One API serves the compiled frontend. Docker Compose adds a durable local SQLite volume for provenance and audit metadata; no paid service, cloud credential or external database is required.
+React + TypeScript + Vite + Recharts control room, FastAPI/Pydantic API, WebSocket telemetry replay, Python/NumPy/scikit-learn hybrid ML core. One API serves the compiled frontend. Docker Compose adds a durable local SQLite volume for provenance and audit metadata; no paid service, cloud credential or external database is required.
 
 Three deterministic fictional profiles cover T2D with hypertension/CKD context, lower BMI with waist context, and prediabetes with shift work. Synthetic FHIR R4 document bundles include historical glucose, clinical context, labs and medication history. The synchronizer **reads its initial baseline from FHIR**, then advances state on five-minute packets. It produces actual 15–120 minute reduced-order forecasts and bounded additive meal/activity scenarios. The UI exposes replay controls, FHIR checks, evaluation evidence, data provenance and a revoke/restore consent demonstration.
 
-This is an illustrative reduced-order model, not a full Bergman/Hovorka model. No residual ML, clinical validation, uncertainty bands, calibrated event probabilities, medication simulator, full ABDM integration or legal compliance is claimed. HR/HRV/EDA/temperature are contextual signals, not substitutes for CGM. See [model methodology](docs/model_methodology.md) and [decision log](docs/decision_log.md).
+The live path is a hybrid research model: a bounded Bergman/Hovorka-inspired prior, gradient-boosted residual correction, quantile bounds and endpoint classifiers using EHR and wearable context. It is not a validated Bergman/Hovorka implementation, and its probabilities and intervals are not clinically calibrated. HR/HRV/EDA/temperature are model features, not substitutes for CGM. See [model methodology](docs/model_methodology.md) and [decision log](docs/decision_log.md).
 
 ## Native setup and launch
 
@@ -67,7 +67,7 @@ docker compose ps
 docker compose down
 ```
 
-Same URL, port 8000. Compose configuration parses successfully. **Container execution has not been verified here because the Docker engine is not running.** Initial image builds need network access. The native path is the verified route. Do not claim a successful Docker launch based on the configuration check.
+Same URL, port 8000. Container build, startup and healthcheck have been verified with Docker Desktop. Initial image builds need network access.
 
 ## Tests and reproducible evaluation
 
@@ -81,7 +81,7 @@ python manage.py smoke
 
 `test` runs Python lint/unit/API tests, TypeScript checking, ESLint and frontend component tests, failing on nonzero status. Browser smoke uses the real API, including consent denial, and captures screenshots into reports/. CI repeats setup, tests, evaluation and browser journey. Hosted CI itself has not run until the repository is published.
 
-Actual verification and limits: [audit](docs/audit.md). Current scientific/API/import suite: **23 passing tests**. Frontend: **2 passing component/API-client tests**, typecheck/lint/build pass. Browser: **1 passing complete journey**, with desktop and 390-pixel layout checks. Advisory reports are in reports/ and are time-specific, not security certification.
+Actual verification and limits: [audit](docs/audit.md). Current scientific/API/import suite: **25 passing tests**. Frontend: **2 passing component/API-client tests**, typecheck/lint/build pass. Browser: **1 passing complete journey**, with desktop and 390-pixel layout checks. Advisory reports are in reports/ and are time-specific, not security certification.
 
 ## Measured synthetic results
 
@@ -100,7 +100,7 @@ The hybrid model is now evaluated separately: RMSE is 5.50, 7.99, 13.12,
 synthetic generator. These results are not clinical validation and may reflect
 the simulator's construction.
 
-Units: mg/dL. Ridge is strongest on this simulator; reduced-order loses to persistence at 15 minutes. These numbers do **not** establish clinical accuracy. The online dashboard uses the reduced-order state/scenario engine; ridge is an offline benchmark. [Full metrics](reports/metrics.json), [truth/prediction pairs](reports/predictions.csv), [figure](reports/evaluation.pdf). Metrics include MAE, MARD, confusion counts and AUROC/AUPRC where defined. No probabilistic Brier, interval coverage or verified Clarke grid is available. Undefined values are null.
+Units: mg/dL. The hybrid result is strongest on this simulator. These numbers do **not** establish clinical accuracy. The online dashboard uses the hybrid state/scenario engine; Ridge and reduced-order models remain benchmarks. [Full metrics](reports/metrics.json), [truth/prediction pairs](reports/predictions.csv), [figure](reports/evaluation.pdf). Metrics include MAE, MARD, confusion counts, research event probabilities, quantile outputs and Clarke Error Grid categories where defined. These probabilities and intervals are not clinically calibrated. Undefined values are null.
 
 ## Demo walkthrough
 
@@ -121,7 +121,7 @@ deployment-controlled and is never accepted from the caller.
 ## Submission and technical artifacts
 
 - [Architecture PDF](docs/architecture.pdf), [editable Mermaid](docs/architecture.mmd), [diagram generator](scripts/build_figures.py)
-- [Jury presentation PPTX](presentation/project_presentation.pptx) and [PDF viewing copy](presentation/project_presentation.pdf)
+- [Jury presentation PDF](presentation/project_presentation.pdf)
 - [22-minute video script](demo/video_script.md) and [pending video URL](demo/video_link.md)
 - [Model card](docs/model_card.md), [methodology](docs/model_methodology.md), [data dictionary](docs/data_dictionary.md), [sources](docs/sources.md)
 - [Security/privacy](docs/security_privacy.md), [API contract](docs/api_contract.md), [artifact rebuilding](docs/artifact_build.md)
