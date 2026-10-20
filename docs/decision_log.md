@@ -1,0 +1,13 @@
+# Decisions and source conflicts
+
+2026-10-20. Reviewed the official local challenge brief, original research DOCX (text and embedded-code content), context-pack concept markdown, and master request. There was no application repository or git checkout. Source documents and extracted research remain outside this submission directory.
+
+1. Official brief governs submission: focused condition, two-stream fusion, forecasting algorithm, clinician UI, public repository, architecture/presentation, license, team details and minimum 20-minute video. Its top-five/top-ten shortlist statements conflict internally. Do not resolve this administratively by guessing; ask organizers when needed. It does not affect implementation.
+2. The older concept calls the proposal production ready and compliant, prescribes numerous services and reports precise hypothetical improvements. These are unsupported. Current master request explicitly overrides them. This is a research sandbox with no production mode, no medication intervention and no legal compliance claim.
+3. One FastAPI process serves a built React/TypeScript UI plus WebSocket replay. In-memory session state resets on restart. Deterministic seed and JSON/CSV reports provide reproducibility. No mandatory database, Redis or unused Node gateway.
+4. EHR historical glucose initializes the twin. BMI, waist, eGFR and diagnoses provide context; no unverified ethnicity, visceral-resistance or renal-drug multipliers. Synthetic profiles are illustrative, not sampled from ICMR distributions.
+5. No full Bergman/Hovorka model: insulin and identification data are absent. First-order relaxation and a carbohydrate proxy are explicitly illustrative engineering dynamics. Synthetic input generator uses a separate pulse construction, not the forecast transition equation.
+6. No residual boosting or quantile calibration: synthetic samples cannot justify clinical intervals. Fitted ridge is a real benchmark, not the online scenario engine. No fabricated probabilities, SHAP, Clarke grid, or prescribed accuracy. Probabilistic Brier score is unavailable. Endpoint threshold metrics and deterministic any-crossing flags are clearly distinguished.
+7. Official ABDM v6.5.0 URL was checked. No full validator or terminology service was integrated, so no profile tag is asserted. Verified HbA1c LOINC is used; unverified diagnosis/medication codes remain human-readable text. Full national profile conformance remains a real gap.
+8. Public data is optional and separate. No dataset has been downloaded or silently mixed into synthetic evaluation.
+9. Frontend dependency audit triggered upgrades before final validation. Docker engine availability is an external execution constraint; native launch remains the tested path.

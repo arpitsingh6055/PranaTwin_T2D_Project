@@ -1,0 +1,298 @@
+{
+  "resourceType": "Bundle",
+  "id": "9e7edd86-01f1-5b59-8d9a-c439dc78cf88",
+  "type": "document",
+  "identifier": {
+    "system": "https://pranatwin.example/documents",
+    "value": "9e7edd86-01f1-5b59-8d9a-c439dc78cf88"
+  },
+  "timestamp": "2026-10-01T00:00:00+05:30",
+  "meta": {
+    "lastUpdated": "2026-10-01T00:00:00+05:30"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:6de3c136-4d0a-5156-877a-f303bd540546",
+      "resource": {
+        "resourceType": "Composition",
+        "status": "final",
+        "type": {
+          "text": "Synthetic outpatient research summary"
+        },
+        "date": "2026-10-01T00:00:00+05:30",
+        "title": "Synthetic outpatient summary",
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "author": [
+          {
+            "reference": "urn:uuid:83dfe02c-6dcd-5f43-a207-8e02b56265cc"
+          }
+        ],
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Synthetic research record. Not for patient care.</div>"
+        },
+        "section": [
+          {
+            "title": "Synthetic context",
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Synthetic research record. Not for patient care.</div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:6918f423-4433-525b-b05f-ee4ce4a74ad1"
+              },
+              {
+                "reference": "urn:uuid:bb3af289-da2f-5cd2-a23e-566bc5010fe9"
+              },
+              {
+                "reference": "urn:uuid:f70b0fe5-a050-5314-ba88-12de2669652a"
+              },
+              {
+                "reference": "urn:uuid:41f33daa-6edd-5594-b2f3-53e7fa38b473"
+              },
+              {
+                "reference": "urn:uuid:485ea74e-07e1-5413-b2f9-aec7ee3a5e4d"
+              },
+              {
+                "reference": "urn:uuid:e9dd1295-050a-5445-a2f7-c346f666a06b"
+              },
+              {
+                "reference": "urn:uuid:8e5036d4-357b-533c-b027-098a758e4fb5"
+              },
+              {
+                "reference": "urn:uuid:99521326-c330-532a-b7c0-ddc68a78b9fb"
+              },
+              {
+                "reference": "urn:uuid:73884710-ec81-5c01-9d57-8f995bf714fc"
+              }
+            ]
+          }
+        ],
+        "id": "6de3c136-4d0a-5156-877a-f303bd540546"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508",
+      "resource": {
+        "resourceType": "Patient",
+        "identifier": [
+          {
+            "system": "https://pranatwin.example/synthetic",
+            "value": "PT-IND-001"
+          }
+        ],
+        "birthDate": "1968-01-01",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Synthetic research record. Not for patient care.</div>"
+        },
+        "id": "1a21859d-d9c0-522b-ab92-53bc09365508"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:83dfe02c-6dcd-5f43-a207-8e02b56265cc",
+      "resource": {
+        "resourceType": "Organization",
+        "name": "Fictional research sandbox",
+        "active": true,
+        "id": "83dfe02c-6dcd-5f43-a207-8e02b56265cc"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6918f423-4433-525b-b05f-ee4ce4a74ad1",
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "text": "Type 2 diabetes mellitus"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "id": "6918f423-4433-525b-b05f-ee4ce4a74ad1"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:bb3af289-da2f-5cd2-a23e-566bc5010fe9",
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "id": "bb3af289-da2f-5cd2-a23e-566bc5010fe9"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f70b0fe5-a050-5314-ba88-12de2669652a",
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "text": "Chronic kidney disease"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "id": "f70b0fe5-a050-5314-ba88-12de2669652a"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:41f33daa-6edd-5594-b2f3-53e7fa38b473",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": {
+          "text": "HbA1c",
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "effectiveDateTime": "2026-10-01T00:00:00+05:30",
+        "valueQuantity": {
+          "value": 8.1,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "id": "41f33daa-6edd-5594-b2f3-53e7fa38b473"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:485ea74e-07e1-5413-b2f9-aec7ee3a5e4d",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": {
+          "text": "BMI"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "effectiveDateTime": "2026-10-01T00:00:00+05:30",
+        "valueQuantity": {
+          "value": 27.1,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        },
+        "id": "485ea74e-07e1-5413-b2f9-aec7ee3a5e4d"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e9dd1295-050a-5445-a2f7-c346f666a06b",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": {
+          "text": "Waist"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "effectiveDateTime": "2026-10-01T00:00:00+05:30",
+        "valueQuantity": {
+          "value": 98,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "id": "e9dd1295-050a-5445-a2f7-c346f666a06b"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8e5036d4-357b-533c-b027-098a758e4fb5",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": {
+          "text": "eGFR"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "effectiveDateTime": "2026-10-01T00:00:00+05:30",
+        "valueQuantity": {
+          "value": 54,
+          "unit": "mL/min/{1.73_m2}",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        },
+        "id": "8e5036d4-357b-533c-b027-098a758e4fb5"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:99521326-c330-532a-b7c0-ddc68a78b9fb",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": {
+          "text": "Historical glucose baseline"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "effectiveDateTime": "2026-10-01T00:00:00+05:30",
+        "valueQuantity": {
+          "value": 145,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "id": "99521326-c330-532a-b7c0-ddc68a78b9fb"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:73884710-ec81-5c01-9d57-8f995bf714fc",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "status": "completed",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Metformin (historical, illustrative)"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a21859d-d9c0-522b-ab92-53bc09365508"
+        },
+        "authoredOn": "2026-10-01T00:00:00+05:30",
+        "requester": {
+          "reference": "urn:uuid:83dfe02c-6dcd-5f43-a207-8e02b56265cc"
+        },
+        "id": "73884710-ec81-5c01-9d57-8f995bf714fc"
+      }
+    }
+  ]
+}

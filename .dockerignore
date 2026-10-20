@@ -1,0 +1,12 @@
+.git
+.venv
+frontend/node_modules
+frontend/dist
+frontend/test-results
+.test-tmp*
+.build
+.codex-finalizer
+data/raw
+data/processed
+__pycache__
+.env

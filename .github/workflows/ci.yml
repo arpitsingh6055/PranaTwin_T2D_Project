@@ -1,0 +1,27 @@
+name: Verify synthetic sandbox
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install -g pnpm@11.25.0
+      - run: python manage.py setup
+      - run: python manage.py test
+      - run: python manage.py evaluate
+      - run: pnpm --dir frontend exec playwright install --with-deps chromium
+      - run: |
+          python manage.py up > /tmp/pranatwin.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8000/health && break; sleep 1; done
+          python manage.py smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evaluation-and-screenshots
+          path: reports/

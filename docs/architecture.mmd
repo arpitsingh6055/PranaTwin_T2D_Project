@@ -1,0 +1,12 @@
+flowchart LR
+  EHR[FHIR document: historical glucose] --> S[Causal twin state]
+  GEN[Deterministic synthetic telemetry] --> REPLAY[Replay clock]
+  REPLAY --> S
+  S --> MODEL[Reduced-order forecast and scenarios]
+  MODEL --> API[FastAPI with demo consent gate]
+  S --> API
+  API -->|REST and WebSocket| UI[React TypeScript control room]
+  GEN --> EVAL[Purged chronological evaluation]
+  EHR --> EVAL
+  EVAL --> REPORT[CSV pairs and JSON metrics]
+  REPORT --> API

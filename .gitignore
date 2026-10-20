@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.test-tmp*/
+.env
+node_modules/
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/
+data/raw/
+data/processed/
+.build/
+.codex-finalizer/
+.chart-data-*/
+*.log
