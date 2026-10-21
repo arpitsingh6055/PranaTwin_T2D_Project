@@ -1,11 +1,11 @@
 {
   "model_version": "0.2.0-hybrid-gbr",
-  "generated_at": "2026-10-20T09:49:58.012402+00:00",
+  "generated_at": "2026-10-21T04:04:12.610966+00:00",
   "source": "synthetic",
   "dataset_sha256": "7d8e375c62e3bb79118ac8ebdccb111ac950d00a972afa4d1843ca89c348d447",
   "seed": 42,
   "config": {
-    "version": "0.1.0",
+    "version": "0.2.0",
     "seed": 42,
     "step_minutes": 5,
     "return_rate": 0.012,

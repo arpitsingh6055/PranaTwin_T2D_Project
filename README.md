@@ -8,15 +8,43 @@ Indian-context clinician-facing cardiometabolic Digital Twin research PoC for th
 
 | Required item | Status |
 |---|---|
-| Team name | [FILL IN] |
-| College / institution / incubator | [FILL IN] |
-| Members and roles (1–4 eligible students) | [FILL IN] |
-| Team leader name, phone and email | [FILL IN] |
-| Public GitHub repository URL | PENDING — local repository only |
+| Team name | pgp26arpitsingh |
+| College / institution / incubator | Institute of Management Technology, Ghaziabad |
+| Members and roles (1–4 eligible students) | Arpit Singh |
+| Team leader name, phone and email | Arpit Singh · phone number required · pgp26arpitsingh@imt.ac.in |
+| Public GitHub repository URL | PENDING — `https://github.com/arpitsingh6055` is the owner profile; add the final repository URL |
 | Minimum 20-minute demo video | PENDING — [recording instructions](demo/video_link.md) |
 | Open-source license | [MIT](LICENSE), third-party data/dependencies excluded |
 
 Before public submission, rename this project directory to **`Team Name_College Name`** using the real details. Publish only this directory, not the parent context pack, source research DOCX, master prompt or extracted media. Complete personal contact fields only with the team's intended publication details.
+
+## Judge quick start
+
+The fastest complete demonstration uses `PT-IND-001`:
+
+1. Start the application and open `http://127.0.0.1:8000`.
+2. On **Control room**, show the EHR baseline, current synthetic glucose and the primary threshold endpoint.
+3. Click **Start replay** and point out the state version, five-minute simulated packets and forecast timestamps.
+4. Jump to **Post-meal input**, then compare the same-state meal/activity scenario.
+5. Open **Patient & FHIR** to show the historical stream and local structural checks.
+6. Open **Evaluation** to show the purged benchmark and baseline comparison.
+7. Revoke consent, show the protected view disappear, then restore demo access.
+
+The primary showcase endpoint is: **does any sampled point in the selected 15–120 minute forecast cross 180 mg/dL or 70 mg/dL?** It is a research flag, not a diagnosis or treatment recommendation. The displayed classifier score is explicitly uncalibrated. The evaluation report separately labels its endpoint metrics, which score the glucose value exactly at each horizon; these are not presented as the same target.
+
+## Challenge requirement map
+
+| Challenge requirement | Demonstrated in this project |
+|---|---|
+| Static or historical EHR stream | Synthetic FHIR R4 document and **Patient & FHIR** tab |
+| Dynamic wearable/IoT stream | Five-minute telemetry replay over WebSocket |
+| Fusion of both streams | FHIR baseline initializes the causal twin state; packets update it |
+| Localized adverse outcome | Hyperglycemia/hypoglycemia threshold crossing in the selected horizon |
+| Working algorithmic model | Bounded prior plus residual gradient boosting, with benchmarks |
+| Clinician-facing interaction | Control room, quality flags, forecast, scenario lab and provenance |
+| Reproducible evidence | Seeded generator, hashed dataset, JSON metrics and prediction CSV |
+| Architecture and presentation | `docs/architecture.pdf` and `presentation/project_presentation.pdf` |
+| Open-source license | MIT license in `LICENSE` |
 
 ## What runs
 
@@ -127,6 +155,8 @@ deployment-controlled and is never accepted from the caller.
 - [Security/privacy](docs/security_privacy.md), [API contract](docs/api_contract.md), [artifact rebuilding](docs/artifact_build.md)
 - [Synthetic FHIR example](samples/synthetic_fhir.json), [model config](config/model.json), [desktop screenshot](reports/dashboard-desktop.png), [mobile screenshot](reports/dashboard-mobile.png)
 
-## Remaining work
+## Submission gate
 
-Complete team identity, public publication and minimum 20-minute video; execute Docker when an engine is available. For research progress, prioritize authorized real-world CGM data with subject holdout and independent validation. Full FHIR profile/terminology validation, clinical parameter identification and production security are beyond this bounded sandbox. No hospital readiness is implied.
+The software and evidence in this folder are the complete showcase build. Before uploading, the team must replace the four identity placeholders above, add the public repository URL, add the actual 20-minute video URL, and verify the public clone using the launch commands. These are submission metadata requirements, not software features.
+
+The boundaries are deliberate and visible: all default records are synthetic, the FHIR checks are local structural checks rather than full ABDM conformance, probabilities are not clinically calibrated, and the application is not for patient care or deployment. No hospital-readiness claim is made.
